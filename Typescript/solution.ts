@@ -1,15 +1,18 @@
-export function findUniq(arr: number[]): number {
+function isSame(a : string, b : string) : number {
+    var astr = a.toLowerCase().split('').sort()
+    .filter((value, index, self) => self.indexOf(value) === index).join('');
+  var bstr = b.toLowerCase().split('').sort()
+    .filter((value, index, self) => self.indexOf(value) === index).join('');
+  if (astr > bstr) {
+  return -1;
+  }
+  if (bstr > astr) {
+    return 1;
+  }
+  return 0;
+  }
 
-   let slice = arr.slice(0, 3);
-   console.log(slice);
-   if (slice[0] === slice[1] && slice[1] === slice[2]) {
-      return arr.filter(p => p != slice[0])[0];
-   }
-   if (slice[0] === slice[1]) {
-     return slice[2];
-   }
-   if (slice[0] === slice[2]) {
-     return slice[1];
-   }
-   return slice[0];
+export function findUniq(arr: string[]): string {
+  arr = arr.sort(isSame);
+  return isSame(arr[0], arr[1]) == 0 ? arr[arr.length - 1] : arr[0];
 }
