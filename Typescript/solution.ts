@@ -1,16 +1,15 @@
-export const findOdd = (xs: number[]): number => {
-  return xs.reduce((a,b)=> {
-    return a^b; //XOR 
-  } );
-  // let dict = Array<{ x: number; count: number }>();
-  // xs.forEach(num => {
-  //   let item = dict.filter(p => p.x == num)[0];
-  //   if (item) {
-  //     item.count++;
-  //   } else {
-  //     dict.push({ x: num, count: 1 });
-  //   }
-  // });
-  // let number = dict.filter(p => p.count % 2 == 1)[0];
-  // return number.x;
-};
+export function findUniq(arr: number[]): number {
+
+   let slice = arr.slice(0, 3);
+   console.log(slice);
+   if (slice[0] === slice[1] && slice[1] === slice[2]) {
+      return arr.filter(p => p != slice[0])[0];
+   }
+   if (slice[0] === slice[1]) {
+     return slice[2];
+   }
+   if (slice[0] === slice[2]) {
+     return slice[1];
+   }
+   return slice[0];
+}
